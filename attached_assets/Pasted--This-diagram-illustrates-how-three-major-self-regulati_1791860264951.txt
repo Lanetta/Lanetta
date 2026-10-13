@@ -1,0 +1,80 @@
+"""
+This diagram illustrates how three major self-regulation frameworks overlap:
+- Window of Tolerance (Dan Siegel)
+- Polyvagal Theory (Stephen Porges)
+- Mindfulness
+
+The center — “Self-Regulation & Clarity” — represents the state where your
+nervous system is settled enough to think clearly, feel safely, and act with
+intention. It is the place where presence, emotional balance, and flexible
+behavior become possible.
+
+THE THREE STATES:
+1. Window of Tolerance:
+   - Optimal arousal zone where you can stay grounded, responsive, and steady.
+   - When inside the window, you can handle stress without becoming overwhelmed
+     or shutting down.
+
+2. Polyvagal Theory:
+   - Ventral Vagal (Safety & Connection): calm, social, open, regulated.
+   - Sympathetic (Fight/Flight): activated, mobilized, anxious, tense.
+   - Dorsal Vagal (Shutdown): collapsed, numb, withdrawn, overwhelmed.
+
+3. Mindfulness:
+   - Awareness, presence, and the ability to observe your internal state without
+     judgment.
+   - Helps you notice when you leave the window and gently return.
+
+RETURNING TO REGULATION:
+- Slow breathing (especially long exhales)
+- Grounding through senses (5–4–3–2–1)
+- Gentle movement or stretching
+- Orienting to the environment (look around, name what you see)
+- Self-talk that is warm, simple, and reassuring
+- Connection with a safe person
+- Pausing instead of pushing through
+
+BEST PRACTICES FOR WELL-BEING:
+- Build daily micro-moments of regulation (short pauses, breaths, check-ins)
+- Strengthen ventral vagal tone through connection, rhythm, and breath
+- Practice mindfulness in small, doable doses
+- Respect your limits and widen your window gradually
+- Treat dysregulation as information, not failure
+
+This diagram visually anchors these ideas: regulation is not one skill but the
+integration of awareness, physiology, and emotional capacity.
+"""
+
+import matplotlib.pyplot as plt
+from matplotlib_venn import venn3
+
+plt.figure(figsize=(8,8))
+v = venn3(subsets=(1,1,1,1,1,1,1),
+          set_labels=('Window of Tolerance', 'Polyvagal Theory', 'Mindfulness'),
+          set_colors=('teal', 'lavender', 'lightgray'),
+          alpha=0.6)
+
+plt.text(0, 0, 'Self-Regulation & Clarity', ha='center', va='center',
+         fontsize=12, fontweight='bold')
+
+plt.annotate('Window of Tolerance = optimal arousal zone',
+             xy=v.get_label_by_id('100').get_position(),
+             xytext=(-1.5, 1.2),
+             fontsize=10,
+             arrowprops=dict(arrowstyle='->', color='teal'))
+
+plt.annotate('Polyvagal Theory = nervous system states\n(ventral, sympathetic, dorsal)',
+             xy=v.get_label_by_id('010').get_position(),
+             xytext=(1.2, 1.2),
+             fontsize=10,
+             arrowprops=dict(arrowstyle='->', color='purple'))
+
+plt.annotate('Mindfulness = awareness and presence',
+             xy=v.get_label_by_id('001').get_position(),
+             xytext=(1.2, -1.2),
+             fontsize=10,
+             arrowprops=dict(arrowstyle='->', color='gray'))
+
+plt.title('Integration of Window of Tolerance, Polyvagal Theory, and Mindfulness',
+          fontsize=14)
+plt.show()
