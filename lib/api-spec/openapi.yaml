@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: regulationGuide
+    description: Educational content about self-regulation frameworks
 paths:
   /healthz:
     get:
@@ -24,6 +26,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /regulation-guide:
+    get:
+      operationId: getRegulationGuide
+      tags: [regulationGuide]
+      summary: Get the self-regulation framework guide
+      description: Returns the educational guide content based on the supplied project source.
+      responses:
+        "200":
+          description: Guide content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegulationGuide"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +48,89 @@ components:
           type: string
       required:
         - status
+    RegulationGuide:
+      type: object
+      properties:
+        title:
+          type: string
+        introduction:
+          type: string
+        center:
+          type: string
+        frameworks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Framework"
+        nervousSystemStates:
+          type: array
+          items:
+            $ref: "#/components/schemas/NervousSystemState"
+        returningPractices:
+          type: array
+          items:
+            $ref: "#/components/schemas/RegulationPractice"
+        wellbeingPrinciples:
+          type: array
+          items:
+            type: string
+      required:
+        - title
+        - introduction
+        - center
+        - frameworks
+        - nervousSystemStates
+        - returningPractices
+        - wellbeingPrinciples
+    Framework:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        originator:
+          type: string
+        summary:
+          type: string
+        keyIdeas:
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - name
+        - originator
+        - summary
+        - keyIdeas
+    NervousSystemState:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        signals:
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - name
+        - description
+        - signals
+    RegulationPractice:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - id
+        - name
+        - description
 
